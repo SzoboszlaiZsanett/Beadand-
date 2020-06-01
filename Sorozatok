@@ -1,0 +1,120 @@
+#!/bin/bash
+clear
+echo "A program a megfelelően kezelve, megnyit egy weboldalt ahol sorozatokat lehet böngészi, közben pedig bemutat egy példát."
+echo ""
+echo "Ahhoz hogy megfelelelően futtasd a programot írd be, hogy ./Sorozatok -t típus"
+echo ""
+
+while getopts t: option
+do case $option in
+t) tipus=$OPTARG
+esac
+done
+
+if [ -z "$tipus" ]
+then echo "Üresen hagyta a típus részt, a -t után írjon egy műfajtípust"
+echo ""
+fi
+
+action="Akció"
+drama="Dráma"
+comedy="Vígjáték"
+fantasy="Fantasy"
+animation="Animációs"
+thriller="Bűnügyi"
+adventure="Kaland"
+miniseries="Rövid-Sorozatok"
+scifi="Sci-fi"
+horror="Horror"
+reality="Valóság-show"
+children="Gyerek"
+
+if [ $tipus = $action ]
+then echo "Ezen az oldalon a legtöbb Akció típusú sorozatot megtalálja, persze angolul"
+xdg-open https://www.tvtime.com/en/show/browse?genre=action
+echo "Egy példa az ilyen fajta sorozatra: Visszatérők"
+echo "Angolul: The 100, angol leírása:"
+curl https://www.tvtime.com/en/show/268592 | grep "og:description" | cut -c48-
+else if [ $tipus = $drama ]
+then echo "Ezen az oladlon a legtöbb Dráma tipusú sorozatot megtalálja, persze angolul"
+xdg-open https://www.tvtime.com/en/show/browse?genre=drama
+echo "Egy példa az ilyen fajta sorozatra: Hazug csajok társasága"
+echo "Angolul: Pretty Little Liars, angol leírása:"
+curl https://www.tvtime.com/en/show/146711 | grep "og:description" | cut -c48-
+else if [ $tipus = $comedy ]
+then echo "Ezen az oladlon a legtöbb Vígjáték tipusú sorozatot megtalálja, persze angolul"
+xdg-open https://www.tvtime.com/en/show/browse?genre=comedy
+echo "Egy példa az ilyen fajta sorozatokra: Jóbarátok"
+echo "Angolul: Frineds, angol leírása:"
+curl https://www.tvtime.com/en/show/79168 | grep "og:description" | cut -c48-
+else if [ $tipus = $fantasy ]
+then echo "Ezen az oladlon a legtöbb Fantasy tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=fantasy
+echo "Egy példa az ilyen fajta sorozatokra: Különös dolgok"
+echo "Angolul: Stranger Things, angol leírása:"
+curl https://www.tvtime.com/en/show/305288 | grep "og:description" | cut -c48-
+else if [ $tipus = $animation ]
+then echo "Ezen az oladlon a legtöbb Animációs tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=animation
+echo "Egy példa az ilyen fajta sorozatokra: Rick és Morty"
+echo "Angolul: Rick & Morty, angol leírása:"
+curl https://www.tvtime.com/en/show/275274 | grep "og:description" | cut -c48-
+else if [ $tipus = $thriller ]
+then echo "Ezen az oladlon a legtöbb Bűnügyi tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=thriller
+echo "Egy példa az ilyen fajta sorozatokra: Hogyan ússzunk meg egy gyilkosságot"
+echo "Angolul: How to get away with murder, angol leírása:"
+curl https://www.tvtime.com/en/show/281620 | grep "og:description" | cut -c48-
+else if [ $tipus = $adventure ]
+then echo "Ezen az oladlon a legtöbb Kaland tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=adventure
+echo "Egy példa az ilyen fajta sorozatokra: Eltüntek"
+echo "Angolul: Lost, angol leírása:"
+curl https://www.tvtime.com/en/show/73739 | grep "og:description" | cut -c48-
+else if [ $tipus = $miniseries ]
+then echo "Ezen az oladlon a legtöbb Rövid-Sorozatok tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=mini-series
+echo "Egy példa az ilyen fajta sorozatokra: Patrick Melrose"
+echo "Angolul: Patrick Melrose, angol leírása:"
+curl https://www.tvtime.com/en/show/338946 | grep "og:description" | cut -c48-
+else if [ $tipus = $scifi ]
+then echo "Ezen az oladlon a legtöbb Sci-fi tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=science-fiction
+echo "Egy példa az ilyen fajta sorozatokra: Nyolcadik érzék"
+echo "Angolul: Sense8, angol leírása:"
+curl https://www.tvtime.com/en/show/268156 | grep "og:description" | cut -c48-
+else if [ $tipus = $horror ]
+then echo "Ezen az oladlon a legtöbb Horror tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=horror
+echo "Egy példa az ilyen fajta sorozatokra: Scream Queens: Gyilkos történet"
+echo "Angolul: Scream Queens, angol leírása:"
+curl https://www.tvtime.com/en/show/293302 | grep "og:description" | cut -c48-
+else if [ $tipus = $reality ]
+then echo "Ezen az oladlon a legtöbb Valósáh-Show tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=reality
+echo "Egy példa az ilyen fajta sorozatokra: Kamureg"
+echo "Angolul: Catfish: The TV Show, angol leírása:"
+curl https://www.tvtime.com/en/show/262754 | grep "og:description" | cut -c48-
+else if [ $tipus = $children ]
+then echo "Ezen az oladlon a legtöbb Gyerek tipusú sorozatot megtalálja, persze angol leírással"
+xdg-open https://www.tvtime.com/en/show/browse?genre=children
+echo "Egy példa az ilyen fajta sorozatokra: Phineas és Ferb"
+echo "Angolul: Phineas & Ferb, angol leírása:"
+curl https://www.tvtime.com/en/show/81848 | grep "og:description" | cut -c48-
+else echo "A beírt sorozattípus: ($tipus) nem megfelelő!"
+echo ""
+echo "Próbálja meg valamelyiket ezek közül: (Akció) (Dráma), (Vígjáték), (Fantasy), (Animációs), (Bűnügyi), (Kaland), (Rövid-Sorozatok), (Sci-Fi), (Horror), (Valóság-show), (Gyerek)."
+echo ""
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+
